@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:OpenWeatherAppCore/OpenWeatherAppCore.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OpenWeatherNetwork/OpenWeatherNetwork.xcodeproj">
    </FileRef>
    <FileRef
