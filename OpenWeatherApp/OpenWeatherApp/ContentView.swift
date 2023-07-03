@@ -6,16 +6,25 @@
 //
 
 import SwiftUI
+import OpenWeatherAppCore
 
 struct ContentView: View {
+    @StateObject var viewModel = ContentViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if let data = viewModel.data {
+                CurrentWeatherView(temperature: data.main.temperature, temperatureMax: data.main.temperatureMax, temperatureMin: data.main.temperatureMin)
+            } else {
+                Text("Loading")
+            }
         }
         .padding()
+        .onAppear {
+            Task {
+                await viewModel.fetchData()
+            }
+        }
     }
 }
 

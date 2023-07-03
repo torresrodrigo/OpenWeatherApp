@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OpenWeatherAppCore
 
 @main
 struct OpenWeatherAppApp: App {
