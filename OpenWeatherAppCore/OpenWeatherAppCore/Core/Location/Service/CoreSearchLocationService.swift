@@ -7,13 +7,15 @@
 
 import MapKit
 
-protocol LocationSearchServiceType {
+public protocol LocationSearchServiceType {
     func searchPlaces(query: String) async throws -> [SuggestedPlace]
 }
 
-struct AppleLocationSearchService: LocationSearchServiceType {
+public struct AppleLocationSearchService: LocationSearchServiceType {
     
-    func searchPlaces(query: String) async throws -> [SuggestedPlace] {
+    public init(){}
+    
+    public func searchPlaces(query: String) async throws -> [SuggestedPlace] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         let search = MKLocalSearch(request: request)
@@ -23,5 +25,4 @@ struct AppleLocationSearchService: LocationSearchServiceType {
             SuggestedPlace(name: $0.name ?? "No name", latitude: $0.placemark.coordinate.latitude, longitude: $0.placemark.coordinate.longitude)
         }
     }
-
 }

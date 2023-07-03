@@ -15,11 +15,11 @@ public struct GetSearchSuggestionsPlacesUseCase: GetSearchSuggestionsPlacesUseCa
     
     private let locationService: LocationSearchServiceType
     
-    init(locationService: LocationSearchServiceType = AppleLocationSearchService()) {
+    public init(locationService: LocationSearchServiceType = AppleLocationSearchService()) {
         self.locationService = locationService
     }
     
-    func execute(searchText: String) async throws -> [SuggestedPlace] {
+    public func execute(searchText: String) async throws -> [SuggestedPlace] {
         return try await locationService.searchPlaces(query: searchText)
     }
 }

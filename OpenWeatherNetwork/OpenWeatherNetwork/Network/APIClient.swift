@@ -11,6 +11,8 @@ public protocol APIClientProtocol {
 
 final public class APIClient: APIClientProtocol {
     
+    public init() {}
+    
     private var session: URLSession {
         let configuration: URLSessionConfiguration = URLSessionConfiguration.default
         configuration.waitsForConnectivity = true
@@ -35,9 +37,11 @@ final public class APIClient: APIClientProtocol {
         }
         
         switch response.statusCode {
-        case 200...200:
+        case 200...400:
             do {
-                return try JSONDecoder().decode(T.self, from: data)
+                let decoder: JSONDecoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                return try decoder.decode(T.self, from: data)
             } catch {
                 print("LOGError", error)
                 throw APIError(errorCode: "Error",

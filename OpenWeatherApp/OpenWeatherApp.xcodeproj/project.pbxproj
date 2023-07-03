@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8875373D2A4BE50B006B62C9 /* OpenWeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875373C2A4BE50B006B62C9 /* OpenWeatherAppApp.swift */; };
+		883956F12A51779B00789FC0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883956F02A51779B00789FC0 /* ContentViewModel.swift */; };
+		8875373D2A4BE50B006B62C9 /* OpenWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875373C2A4BE50B006B62C9 /* OpenWeatherApp.swift */; };
 		8875373F2A4BE50B006B62C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875373E2A4BE50B006B62C9 /* ContentView.swift */; };
 		887537412A4BE50E006B62C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887537402A4BE50E006B62C9 /* Assets.xcassets */; };
 		887537442A4BE50E006B62C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887537432A4BE50E006B62C9 /* Preview Assets.xcassets */; };
+		887CCAE92A5157E70032C7FC /* OpenWeatherAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887CCAE82A5157E70032C7FC /* OpenWeatherAppCore.framework */; };
+		88B7203F2A52A09C00EF0339 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B7203E2A52A09C00EF0339 /* CurrentWeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		880970B82A52526100F92F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		883956F02A51779B00789FC0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		887537392A4BE50B006B62C9 /* OpenWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8875373C2A4BE50B006B62C9 /* OpenWeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAppApp.swift; sourceTree = "<group>"; };
+		8875373C2A4BE50B006B62C9 /* OpenWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherApp.swift; sourceTree = "<group>"; };
 		8875373E2A4BE50B006B62C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		887537402A4BE50E006B62C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		887537432A4BE50E006B62C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		887CCAE82A5157E70032C7FC /* OpenWeatherAppCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OpenWeatherAppCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		887CCAEA2A5157EE0032C7FC /* OpenWeatherNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OpenWeatherNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B7203E2A52A09C00EF0339 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				887CCAE92A5157E70032C7FC /* OpenWeatherAppCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +46,7 @@
 			children = (
 				8875373B2A4BE50B006B62C9 /* OpenWeatherApp */,
 				8875373A2A4BE50B006B62C9 /* Products */,
+				887CCAE72A5157E70032C7FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,10 +61,13 @@
 		8875373B2A4BE50B006B62C9 /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				8875373C2A4BE50B006B62C9 /* OpenWeatherAppApp.swift */,
+				880970B82A52526100F92F7B /* Info.plist */,
+				883956F02A51779B00789FC0 /* ContentViewModel.swift */,
+				8875373C2A4BE50B006B62C9 /* OpenWeatherApp.swift */,
 				8875373E2A4BE50B006B62C9 /* ContentView.swift */,
 				887537402A4BE50E006B62C9 /* Assets.xcassets */,
 				887537422A4BE50E006B62C9 /* Preview Content */,
+				88B7203E2A52A09C00EF0339 /* CurrentWeatherView.swift */,
 			);
 			path = OpenWeatherApp;
 			sourceTree = "<group>";
@@ -65,6 +78,15 @@
 				887537432A4BE50E006B62C9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		887CCAE72A5157E70032C7FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				887CCAEA2A5157EE0032C7FC /* OpenWeatherNetwork.framework */,
+				887CCAE82A5157E70032C7FC /* OpenWeatherAppCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8875373F2A4BE50B006B62C9 /* ContentView.swift in Sources */,
-				8875373D2A4BE50B006B62C9 /* OpenWeatherAppApp.swift in Sources */,
+				88B7203F2A52A09C00EF0339 /* CurrentWeatherView.swift in Sources */,
+				8875373D2A4BE50B006B62C9 /* OpenWeatherApp.swift in Sources */,
+				883956F12A51779B00789FC0 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +294,9 @@
 				DEVELOPMENT_TEAM = MMDTV8J5UC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos permisos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos permisos para obtener tu ubicacion actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +326,9 @@
 				DEVELOPMENT_TEAM = MMDTV8J5UC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos permisos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos permisos para obtener tu ubicacion actual";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

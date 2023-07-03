@@ -6,36 +6,37 @@
 //
 
 import CoreLocation
+import Combine
 
-public protocol CurrentLocationService {
-    func getCurrentLocation() async throws -> Location
+public class CoreLocationService: NSObject, ObservableObject {
+    private var locationManager: CLLocationManager = CLLocationManager()
+    @Published var location: Location?
+    
+    public override init() {
+        super.init()
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        locationManager.delegate = self
+    }
+    
+    public func start() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    public func stop() {
+        locationManager.stopUpdatingLocation()
+    }
 }
 
-public class CoreLocationService: NSObject, CurrentLocationService, CLLocationManagerDelegate {
-    private let locationManager: CLLocationManager
-    private var currentRequest: CheckedContinuation<Location, Error>?
-    
-    public init(locationManager: CLLocationManager = CLLocationManager()) {
-        self.locationManager = locationManager
-    }
-    
-    public func getCurrentLocation() async throws -> Location {
-        return try await withCheckedThrowingContinuation { continuation in
-            self.currentRequest = continuation
-            self.locationManager.requestLocation()
-        }
-    }
-
+extension CoreLocationService: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else {  return }
-        let result = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        currentRequest?.resume(returning: result)
-        currentRequest = nil
+        guard let newLocation = locations.last else { return }
+        let result = Location(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+        location = result
+        stop()
     }
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        currentRequest?.resume(throwing: error)
-        currentRequest = nil
+        print("Error: \(error)")
     }
-    
 }

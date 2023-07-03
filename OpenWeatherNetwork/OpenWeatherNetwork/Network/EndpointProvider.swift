@@ -6,7 +6,7 @@
 //
 
 public protocol EndpointProvider {
-    var scheme: String { get }
+    var scheme: String { get set }
     var baseUrl: String { get }
     var path: String { get }
     var method: RequestMethod { get }
